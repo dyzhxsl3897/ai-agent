@@ -1,0 +1,11 @@
+{
+  "world_id": "demo_world",
+  "name": "Demo World",
+  "rules": [
+    "This is a reusable virtual world template.",
+    "All characters are adults.",
+    "The world does not retain memory across sessions."
+  ],
+  "characters": [],
+  "initial_state": {}
+}

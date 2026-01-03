@@ -1,0 +1,19 @@
+{
+  "world_id": "cmd_agent",
+  "name": "Agent Command Center",
+  "rules": [
+    "This world is a command interpretation and API dispatch environment.",
+    "The agent's sole responsibility is to understand user commands and translate them into HTTP API requests.",
+    "The agent does not execute APIs and does not perform side effects.",
+    "The agent must only use explicitly provided APIs and must never hallucinate new endpoints.",
+    "All actionable outputs must be structured JSON describing HTTP requests.",
+    "If the user's intent is ambiguous, the agent must ask for clarification instead of guessing.",
+    "The world does not retain memory across sessions."
+  ],
+  "characters": [],
+  "initial_state": {
+    "session_type": "command_only",
+    "output_format": "http_request_json",
+    "execution_mode": "dry_run"
+  }
+}

@@ -1,0 +1,38 @@
+<div style="font-family: Arial, sans-serif; padding: 16px; max-width: 720px;">
+  <h2>Agent Command Center</h2>
+
+  <div style="margin-bottom: 12px;">
+    <button (click)="refresh()" [disabled]="busy()">Refresh Status</button>
+    @if (busy()) {
+    <span style="margin-left: 12px;">Working...</span>
+    }
+  </div>
+
+  <hr />
+
+  <h3>Light</h3>
+  <div style="display:flex; gap: 8px; align-items:center;">
+    <button (click)="lightOn()" [disabled]="busy()">Turn ON</button>
+    <button (click)="lightOff()" [disabled]="busy()">Turn OFF</button>
+    <div style="margin-left: 12px;">
+      Status:
+      <strong>
+        {{ lightOnState === null ? 'Unknown' : (lightOnState() ? 'ON' : 'OFF') }}
+      </strong>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 18px;">Garage Door</h3>
+  <div style="display:flex; gap: 8px; align-items:center;">
+    <button (click)="garageOpen()" [disabled]="busy()">Open</button>
+    <button (click)="garageClose()" [disabled]="busy()">Close</button>
+    <div style="margin-left: 12px;">
+      Height:
+      <strong>{{ garageHeight() === null ? 'Unknown' : (garageHeight() + '%') }}</strong>
+    </div>
+  </div>
+
+  @if (message) {
+  <p style="color: #b00020;">{{ message }}</p>
+  }
+</div>

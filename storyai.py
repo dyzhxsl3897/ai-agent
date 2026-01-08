@@ -198,7 +198,7 @@ def cmd_new(root: Path, world_id: str) -> None:
     safe_mkdir(worlds_dir(root))
     safe_mkdir(sessions_dir(root))
 
-    sdir = create_session_skeleton(root, world_id, model="MODEL")
+    sdir = create_session_skeleton(root, world_id, model=MODEL)
     si = read_session_info(sdir)
     model = get_model_from_session(si)
 

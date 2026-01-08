@@ -10,6 +10,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import requests
 
+MODEL = "qwen2.5:7b"
 
 # ---------- Paths ----------
 def get_root(explicit_root: Optional[str] = None) -> Path:
@@ -111,7 +112,7 @@ def read_session_info(session_dir: Path) -> SessionInfo:
 
 def get_model_from_session(si: SessionInfo) -> str:
     m = si.params.get("model")
-    return str(m) if m else "qwen3:8b"
+    return str(m) if m else "MODEL"
 
 
 # ---------- Character cards ----------
@@ -167,7 +168,7 @@ def cmd_worlds(root: Path) -> None:
         print(f"  - {w}")
 
 
-def create_session_skeleton(root: Path, world_id: str, model: str = "qwen3:8b") -> Path:
+def create_session_skeleton(root: Path, world_id: str, model: str = "MODEL") -> Path:
     wpath = worlds_dir(root) / world_id
     if not wpath.exists():
         raise FileNotFoundError(f"World not found: {wpath}")
@@ -197,7 +198,7 @@ def cmd_new(root: Path, world_id: str) -> None:
     safe_mkdir(worlds_dir(root))
     safe_mkdir(sessions_dir(root))
 
-    sdir = create_session_skeleton(root, world_id, model="qwen3:8b")
+    sdir = create_session_skeleton(root, world_id, model="MODEL")
     si = read_session_info(sdir)
     model = get_model_from_session(si)
 
